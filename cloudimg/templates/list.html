@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+        <head>
+			 <style>
+			ul#menu li {
+					display:inline;
+			}
+			</style>
+               <meta charset="utf-8">
+               <title>Face crops</title>
+        </head>
+        <body>
+                <!-- List of uploaded documents -->
+                {% if face_img_urls %}
+					 {% for face_urls in face_img_urls %}
+                        <ul id="menu">
+                        {% for aurl in face_urls %}
+                                <li>
+                                <img src="{{ aurl}}" alt="{{ aurl }}">
+                                </li>
+                        {% endfor %}
+                        </ul>
+					{% endfor %}
+
+                {% else %}
+                        <p>No documents.</p>
+                {% endif %}
+
+                <!-- Upload form. Note enctype attribute! -->
+                <form  method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <p>{{ form.non_field_errors }}</p>
+                        <p>{{ form.docfile.label_tag }} </p>
+                        <p>
+                                {{ form.docfile.errors }}
+                                {{ form.docfile }}
+                        </p>
+                        <p>
+						<input type="file" name="img" multiple >
+						<input type="submit" >
+						</p>
+                </form>
+
+        </body>
+
+</html>
