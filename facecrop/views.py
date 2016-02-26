@@ -10,20 +10,19 @@ import face_detection
 import os
 import ipdb
 def index(request):
-    ipdb.set_trace()
-    # Handle file upload
+     # Handle file upload
     face_img_urls = []
     face_dir = settings.FACE_CROP_IMAGE_DIR.split(os.sep)[-1]
 
     if request.method == 'POST':
+        ipdb.set_trace()
         form = ImageForm(request.POST, request.FILES)
         current_images = Image.objects.all()
         new_id = len(current_images) + 1
-#       newdoc = Image(docfile = request.FILES['docfile'])
         files = request.FILES.getlist('img')
         for file_i in range(len(files)):
             newdoc = Image(docfile = files[file_i])
-            new_file_name = str(new_id + file_i) + os.path.splitext(f.name)[1]
+            new_file_name = str(new_id + file_i) + os.path.splitext(files[file_i].name)[1]
             newdoc.docfile.name =  new_file_name 
             newdoc.save()
             face_file_paths = face_detection.detect_one_img(settings.UPLOAD_IMAGE_DIR + os.sep + new_file_name, settings.FACE_CROP_MARGIN,settings.FACE_CROP_IMAGE_DIR)
