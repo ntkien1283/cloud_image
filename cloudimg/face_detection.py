@@ -13,7 +13,6 @@ import ipdb
 import os
 import cloudimg.settings as settings
 def detect(img, cascade):
-    ipdb.set_trace()
     rects = cascade.detectMultiScale(img, scaleFactor=1.3, minNeighbors=4, minSize=(30, 30),
                                      flags=cv2.CASCADE_SCALE_IMAGE)
     if len(rects) == 0:

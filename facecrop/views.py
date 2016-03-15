@@ -15,7 +15,6 @@ def index(request):
     face_dir = settings.FACE_CROP_IMAGE_DIR.split(os.sep)[-1]
 
     if request.method == 'POST':
-        ipdb.set_trace()
         form = ImageForm(request.POST, request.FILES)
         current_images = Image.objects.all()
         new_id = len(current_images) + 1
