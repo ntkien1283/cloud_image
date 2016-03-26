@@ -1,5 +1,8 @@
-*.swn
-*.swl
+.*swn
+.*swl
+.*swp
+.*swm
+.*swo
 *.pyc
 *.png
 *.jpg
