@@ -19,8 +19,7 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 import settings
 import ipdb
-import views
 urlpatterns = patterns('',
-		        (r'^index/', views.index),
+		        (r'^facecrop/', include('facecrop.urls')),
 				(r'^admin/', include(admin.site.urls)),
 				) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
